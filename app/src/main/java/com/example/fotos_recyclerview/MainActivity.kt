@@ -23,7 +23,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fotos.view.*
 import kotlinx.android.synthetic.main.main2.*
 
-
+// check check
 class MainActivity : AppCompatActivity() {
 
 lateinit var fotos_galeria:LiveAdapter
