@@ -52,7 +52,7 @@ class LiveAdapter(lista:ArrayList<String> ): RecyclerView.Adapter<RecyclerView.V
         itemView: View
     ) : RecyclerView.ViewHolder(itemView) {
 
-         var Thumbnail = itemView.fotos
+         var Thumbnail = itemView.fotos_usuario
 
         fun bind(live: String) {
 

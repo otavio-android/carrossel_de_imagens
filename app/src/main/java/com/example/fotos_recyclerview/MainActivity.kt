@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.*
 import com.bumptech.glide.Glide
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fotos.view.*
 import kotlinx.android.synthetic.main.main2.*
 
@@ -28,15 +29,28 @@ class MainActivity : AppCompatActivity() {
 
 lateinit var fotos_galeria:LiveAdapter
 var codigo_request = 10
+// lateinit var btn_permission:FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 setContentView(R.layout.main2)
-        permission()
+      var btn_permission = findViewById<FloatingActionButton>(R.id.floatingActionButton2)
+
+        btn_permission.setOnClickListener(){
+            if(ActivityCompat.checkSelfPermission
+                    (this,android.Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
+            { ActivityCompat.requestPermissions(this@MainActivity,
+                arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE ),codigo_request) }
+            else{
+
+                get_fotos()
+            }
+        }
+
 
     }
 
-    fun permission(){
+   /* fun permission(){
         if(ActivityCompat.checkSelfPermission
                 (this,android.Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
         { ActivityCompat.requestPermissions(this@MainActivity,
@@ -46,7 +60,7 @@ setContentView(R.layout.main2)
             get_fotos()
         }
 
-    }
+    }*/
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
